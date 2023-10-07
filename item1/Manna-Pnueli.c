@@ -13,13 +13,13 @@ void Server(int id);
 void SecaoCritica(int id);
 
 int main(){
-    #pragma omp parallel num_threads(2)
+    #pragma omp parallel num_threads(2)//cria duas threads
     {
-        int id = omp_get_thread_num();
-        if(id == 0){
-            Server(id);
+        int id = omp_get_thread_num();//pega o id da thread
+        if(id == 0){//se for a thread 0, ela é o servidor
+            Server(id);//chama a função do servidor
         }else{
-            Client(id);
+            Client(id);//se não, é um cliente
         }
     }
 
@@ -27,28 +27,28 @@ int main(){
     return 0;
 }
 
-void Client(int id){
-    while(true){
-        while(respond != id){
+void Client(int id){//função do cliente
+    while(true){//loop infinito
+        while(respond != id){//enquanto o respond for diferente do id do cliente
             request = id;
         }
-        SecaoCritica(id);
+        SecaoCritica(id);//chama a seção crítica
         respond = 0;
     }
 }
 
-void Server(int id){
+void Server(int id){//função do servidor
     while(true){
-        while(request == 0);
+        while(request == 0);//enquanto o request for 0
         respond = request;
-        while(respond != 0);
+        while(respond != 0);//enquanto o respond for diferente de 0
         request = 0;
     }
 }
 
-void SecaoCritica(int id){
+void SecaoCritica(int id){//função da seção crítica
     int local = soma;
-    sleep(rand()%2);
+    sleep(rand()%2);//dorme por um tempo aleatório
     soma = local + 1;
 
     printf("Thread %d: %d\n", id, soma);
