@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <omp.h>
 
 int soma = 0;
@@ -17,10 +18,22 @@ int main(){
 }
 
 void Client(int id){
-    while
+    while(true){
+        while(respond != id){
+            request = id;
+        }
+        SecaoCritica(id);
+        respond = 0;
+    }
 }
 
 void Server(int id){
+    while(true){
+        while(request == 0);
+        respond = request;
+        while(respond != 0);
+        request = 0;
+    }
 }
 
 void SecaoCritica(int id){
