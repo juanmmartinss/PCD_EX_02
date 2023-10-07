@@ -16,11 +16,11 @@ int main(){
     return 0;
 }
 
-void client(int id){
+void Client(int id){
     while
 }
 
-void server(int id){
+void Server(int id){
 }
 
 void SecaoCritica(int id){
