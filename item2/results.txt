@@ -1,0 +1,11 @@
+OMP A
+1T
+2T
+4T 
+8T
+
+OMP B
+1T
+2T
+4T 
+8T 

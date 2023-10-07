@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <omp.h>
 #include <sys/time.h>
-//#include <pthread.h>
 
 #define N 2048
 #define MAX_ITER 500
@@ -15,6 +14,14 @@ typedef struct viz_t{
     float media;
     int vivos;
 }viz_t;
+
+/*
+Utilizar a diretiva #pragma omp critical para realizar a operação entre as threads, 
+totalizando os resultados em uma variável global ao final;
+
+Utilize uma operação de redução através da diretiva #pragma omp for reduction(???) 
+para realizar a mesma operação.
+*/
 
 void alocarMatriz(float ***matriz);
 void desalocarMatriz(float **matriz);
@@ -96,6 +103,7 @@ int main(){
         //printSubgrid(grid);
         //system("cls");
     }
+    //printf("Ultima geracao: %d\n", celulas_vivas);
 
     gettimeofday(&end_time, NULL);
 
