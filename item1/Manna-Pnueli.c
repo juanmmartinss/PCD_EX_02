@@ -2,8 +2,13 @@
 #include <stdlib.h>
 #include <omp.h>
 
-void client(int id);
-void server(int id);
+int soma = 0;
+int respond = 0;
+int request = 0;
+
+void Client(int id);
+void Server(int id);
+void SecaoCritica(int id);
 
 int main(){
 
@@ -12,8 +17,14 @@ int main(){
 }
 
 void client(int id){
-
+    while
 }
 
 void server(int id){
+}
+
+void SecaoCritica(int id){
+    int local = soma;
+    sleep(rand()%2);
+    soma = local + 1;
 }
