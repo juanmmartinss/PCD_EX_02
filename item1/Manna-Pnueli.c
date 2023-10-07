@@ -12,6 +12,15 @@ void Server(int id);
 void SecaoCritica(int id);
 
 int main(){
+    #pragma omp parallel num_threads(2)
+    {
+        int id = omp_get_thread_num();
+        if(id == 0){
+            Server(id);
+        }else{
+            Client(id);
+        }
+    }
 
 
     return 0;
@@ -40,4 +49,6 @@ void SecaoCritica(int id){
     int local = soma;
     sleep(rand()%2);
     soma = local + 1;
+
+    printf("Thread %d: %d\n", id, soma);
 }
