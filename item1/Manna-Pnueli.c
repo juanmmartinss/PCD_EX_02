@@ -21,8 +21,10 @@ int main(){
         }else{
             Client(id);//se não, é um cliente
         }
+        //while(true){
+            //SecaoCritica(id);
+        //}
     }
-
 
     return 0;
 }
@@ -32,6 +34,7 @@ void Client(int id){//função do cliente
         while(respond != id){//enquanto o respond for diferente do id do cliente
             request = id;
         }
+        //printf("Thread %d: %d\n", id, soma);
         SecaoCritica(id);//chama a seção crítica
         respond = 0;
     }
@@ -50,6 +53,5 @@ void SecaoCritica(int id){//função da seção crítica
     int local = soma;
     sleep(rand()%2);//dorme por um tempo aleatório
     soma = local + 1;
-
     printf("Thread %d: %d\n", id, soma);
 }
