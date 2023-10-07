@@ -21,9 +21,6 @@ int main(){
         }else{
             Client(id);//se não, é um cliente
         }
-        //while(true){
-            //SecaoCritica(id);
-        //}
     }
 
     return 0;
