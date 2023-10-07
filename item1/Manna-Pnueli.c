@@ -13,7 +13,7 @@ void Server(int id);
 void SecaoCritica(int id);
 
 int main(){
-    #pragma omp parallel num_threads(2)//cria duas threads
+    #pragma omp parallel num_threads(4)//cria duas threads
     {
         int id = omp_get_thread_num();//pega o id da thread
         if(id == 0){//se for a thread 0, ela é o servidor
