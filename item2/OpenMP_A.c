@@ -4,8 +4,6 @@
 #include <sys/time.h>
 
 #define N 2048
-#define MAX_ITER 500
-#define MAX_THREADS 8
 #define ANSI_YELLOW "\x1b[33m"
 #define ANSI_GREEN "\x1b[32m"
 #define ANSI_WHITE "\x1b[37m"
@@ -28,7 +26,14 @@ void desalocarMatriz(float **matriz);
 void vizinhos(viz_t *viz, float** grid, int x, int y);
 void printSubgrid(float **grid);
 
-int main(){
+int main(int argc, char *argv[]){
+
+    if (argc != 3) {
+        printf("Uso: %s <num_iteracoes> <num_threads>\n", argv[0]);
+        return 1;
+    }
+    int MAX_ITER = atoi(argv[1]);
+    int MAX_THREADS = atoi(argv[2]);
 
     struct timeval start_time, end_time;
     double elapsed_time;
@@ -112,13 +117,11 @@ int main(){
     //printf("Ultima geracao: %d\n", celulas_vivas);
 
     gettimeofday(&end_time, NULL);
-
-    printf("-------Execução OpenMP finalizada(%d Threads)-------\n", MAX_THREADS);
-
+    printf(">>>Execução finalizada<<<\n");
+    FILE *fp = fopen("results_A.txt", "a");
     elapsed_time = (end_time.tv_sec - start_time.tv_sec) + 
                    (end_time.tv_usec - start_time.tv_usec) / 1000000.0;
-
-    printf("Tempo total de execução: %lf segundos\n", elapsed_time);
+    fprintf(fp, "%d threads | %lf segundos\n", MAX_THREADS, elapsed_time);
 
     desalocarMatriz(grid);
     desalocarMatriz(new_grid);
