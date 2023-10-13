@@ -12,8 +12,14 @@ void Client(int id);
 void Server(int id);
 void SecaoCritica(int id);
 
-int main(){
-    #pragma omp parallel num_threads(4)//cria duas threads
+int main(int argc, char *argv[]){
+    if (argc != 2) {
+        printf("Uso: %s <num_threads>\n", argv[0]);
+        return 1;
+    }
+    int MAX_THREADS = atoi(argv[1]);
+    
+    #pragma omp parallel num_threads(MAX_THREADS)//cria duas threads
     {
         int id = omp_get_thread_num();//pega o id da thread
         if(id == 0){//se for a thread 0, ela é o servidor

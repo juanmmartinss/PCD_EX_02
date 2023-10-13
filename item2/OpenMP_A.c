@@ -13,14 +13,6 @@ typedef struct viz_t{
     int vivos;
 }viz_t;
 
-/*
-Utilizar a diretiva #pragma omp critical para realizar a operação entre as threads, 
-totalizando os resultados em uma variável global ao final;
-
-Utilize uma operação de redução através da diretiva #pragma omp for reduction(???) 
-para realizar a mesma operação.
-*/
-
 void alocarMatriz(float ***matriz);
 void desalocarMatriz(float **matriz);
 void vizinhos(viz_t *viz, float** grid, int x, int y);
