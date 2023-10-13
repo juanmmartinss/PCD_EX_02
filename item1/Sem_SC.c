@@ -1,3 +1,9 @@
+/*
+Daniel Ferreira Martins, RA: 156.369
+Savio Augusto Machado Araujo, RA: 156.584
+Juan Marcos Martins, RA: 156.470
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
