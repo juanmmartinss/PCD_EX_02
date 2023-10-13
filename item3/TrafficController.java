@@ -14,7 +14,6 @@ public class TrafficController {
     public void enter(String car) {
         if(car.compareTo("red_car")==0) leftQ++;
         if(car.compareTo("blue_car")==0) rightQ++;
-        System.out.printf("LQ: %d | RQ: %d\n", leftQ, rightQ);
         trava.lock();
         try{
             if ((libera!=0)&&(car.compareTo("red_car")==0)&&(rightQ > 0)) red_car.await();
@@ -41,7 +40,6 @@ public class TrafficController {
             else blue_car.signal();
         }
         trava.unlock();
-        System.out.printf("LQ: %d | RQ: %d\n", leftQ, rightQ);
     }
 
 }
